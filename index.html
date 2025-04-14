@@ -1,84 +1,35 @@
 <!DOCTYPE html>
-<html>
-
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Disable button on 5 seconds</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disable Button Example</title>
+    <style>
+        /* Optional: Add some basic styling for the button */
+        .my-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-  <style>
-    body {
-  background: #20262E;
-  padding: 20px;
-  font-family: Helvetica;
-}
-
-#banner-message {
-  background: #fff;
-  border-radius: 4px;
-  padding: 20px;
-  font-size: 25px;
-  text-align: center;
-  transition: all 0.2s;
-  margin: 0 auto;
-  width: 300px;
-}
-
-button {
-  background: #0084ff;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 14px;
-  font-size: 15px;
-  color: #fff;
-}
-
-#banner-message.alt {
-  background: #0084ff;
-  color: #fff;
-  margin-top: 40px;
-  width: 200px;
-}
-
-#banner-message.alt button {
-  background: #fff;
-  color: #000;
-}
-
-button:disabled,
-button[disabled]{
-  background: rgba(0, 132, 255, 0.5);
-  color: #666666;
-}
-  </style>
-
-  
+        .my-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
-  <div id="banner-message">
-  <p>Hello World</p>
-  <button id="button_id">Submit</button>
-</div>
+    <button class="my-button" id="myButton">Click Me</button>
 
+    <script>
+        document.getElementById('myButton').addEventListener('click', function() {
+            var button = this;
+            button.disabled = true;
 
-  <script>
-    // Когда нажали на кнопку #button_id
-$(document).on('click', '#button_id', function(){
-
-	var element_id = $(this);
-  
-	// Установим атрибут на кнопку disabled
-	$(element_id).attr('disabled', 'disabled');
-  $(element_id).html('Loading...');
-
-	// Через 5 секунд уберем этот атрибут
-	setTimeout(function(){
-		$(element_id).removeAttr('disabled');
-    $(element_id).html('Submit');
-	}, 5000); // Время в милисекундах
-
-});
-  </script>
+            setTimeout(function() {
+                button.disabled = false;
+            }, 5000); // 5000 milliseconds = 5 seconds
+        });
+    </script>
 </body>
 </html>
